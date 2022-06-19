@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title> Admin Page </title> 
+{% endblock %}
+
+{% block body %} 
+
+    <h1 align="center"> Welcome to Company Database. </h1>
+
+    <div>
+        <u><h3 align=middle>Choose any one of following options</h3></u>
+        <p align=center>
+            <b>1. Create</b> a new employee record <br><br>
+            <b>2. Search/Update/Delete</b> an employee record
+        </p>
+    <form action="/choice" method="post">
+        <hr>
+        <label for="desc_1" ><h3 align=center>Enter your choice : </h3></label>
+        <p align=center>
+        <input type="number" id="choice" name="choice" placeholder="enter your choice"> 
+        <input type="submit" id="submit_choice" value="Submit">
+        </p>
+    </form>
+
+   
+        {% if logged_messages %}
+        <div> 
+            <h4>Logged Messages</h4>
+            <hr>
+            <br>
+            {% for message in logged_messages %} 
+                <li> {{ message }} </li> <br>
+            {% endfor %}
+            <hr>
+        </div>
+        {% endif %}
+    
+
+{% endblock %}

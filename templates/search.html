@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block head %}  
+    <title>Search Employee</title>
+{% endblock %}
+
+{% block body %}
+    
+    <h2 align="center"><u>Search employee in database</u></h2>
+    <!-- Insert New Employee Details -->
+
+    <form action="/search_db" method="post">
+        <p align="center">
+        <label for="emp_id" >Employee ID : </label>   </br></br>
+        <input type="number" id="emp_id" name="emp_id" placeholder="{{ emp_data['emp_id'] }}">   </br> </br>
+
+        <label for="emp_name" >Employee Name : </label>   </br></br>
+        <input type="text" id="emp_name" name="emp_name" placeholder="{{ emp_data['emp_name'] }}">   </br></br>
+
+        <label for="emp_dob" >Employee D.O.B. : </label>   </br></br>
+        <input type="date" id="emp_dob" name="emp_dob" placeholder="{{ emp_data['emp_dob'] }}">   </br></br>
+
+        <label for="emp_designation" >Employee Designation : </label>   </br></br>
+        <input type="text" id="emp_designation" name="emp_designation" placeholder="{{ emp_data['emp_designation'] }}">   </br></br>
+        
+        <input type="submit" id="back_home" value="Home" formaction="/"> 
+        <input type="submit" id="read_emp" value="Search">
+    </p>
+    </form>
+    <br>
+
+    {% if query_result %}
+        <h2>Query Results </h2> <br>
+        <b>{{ query_result }}</b>
+
+        <form action="/" methods="post">
+        <table id='table' style="width:100%" border=1>
+            <tr>
+                <td>employee id</td>
+                <td>Name</td>
+                <td>D.O.B.</td>
+                <td>Designation</td>
+                <td>Joining date</td>
+                <td></td>
+                <td></td>
+            </tr>
+            {% for employee in results %}
+            <tr>
+                <td id="a">{{ employee.eid }}</td> 
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.dob }}</td>
+                <td>{{ employee.designation }}</td>
+                <td>{{ employee.date_created.date() }}</td>
+                <td><input type='submit' formaction="/update/{{ employee.eid }}"  value="update"></td>
+                <td><input type='submit' formaction="/delete/{{ employee.eid }}" value="delete"></td>
+            </tr>
+            {% endfor %}
+        </table>
+        </form>
+    {% endif %}
+
+    <script>
+        function update_emp(employee){
+            print("Hello World\n"*6 )
+            redirect('/')
+        }
+    </script>
+    
+{% endblock%}
+

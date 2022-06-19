@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head %}  
+    <title>Add Employee</title>
+{% endblock %}
+
+{% block body %}
+    <h3 align=center><u>Please fill following details of employee</u></h3>
+    <!-- Insert New Employee Details -->
+    <form action="/add_to_db" method="post">
+        <p align=center>
+    
+        <label for="emp_id" >Employee ID : </label>   </br>
+        <input type="number" id="emp_id" name="emp_id" >   </br> </br>
+
+        <label for="emp_name" >Employee Name : </label>   </br>
+        <input type="text" id="emp_name" name="emp_name" >   </br></br>
+
+        <label for="emp_dob" >Employee D.O.B. : </label>   </br>
+        <input type="date" id="emp_dob" name="emp_dob">   </br></br>
+
+        <label for="emp_designation" >Employee Designation : </label>   </br>
+        <input type="text" id="emp_designation" name="emp_designation">   </br></br>
+        
+        <input type="submit" id="back_home" value="Home" formaction="/"> 
+        <input type="submit" id="add_emp" value="Submit">
+
+        </p>
+
+
+    </form>
+    <br>
+
+
+{% endblock%}

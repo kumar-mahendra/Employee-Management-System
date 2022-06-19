@@ -1,0 +1,4 @@
+__pycache__/
+logged_messages.txt
+*.db
+venv
