@@ -2,7 +2,7 @@
 
 It is a simple company database management system. 
 
-You can use this app [here]()
+You can use this app [here](https://employee-dbms-app.herokuapp.com/).
 
 #### Tech Stack
 - **Web Framework** : Flask 
