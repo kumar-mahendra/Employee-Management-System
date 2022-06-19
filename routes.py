@@ -1,6 +1,7 @@
 from flask import Flask, redirect, request, render_template
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import date, datetime
+import os 
 
 app = Flask( __name__    )
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -126,6 +127,13 @@ def search_db():
             
         return render_template('search.html', emp_data = request.form, results=results, query_result=message)
 
+def clean_database(): 
+    try : 
+        os.remove('database.db')
+    except : 
+        pass 
 
+clean_database()  # clean database if already exists 
+   
 # create employee table 
 db.create_all()
