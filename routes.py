@@ -127,13 +127,16 @@ def search_db():
             
         return render_template('search.html', emp_data = request.form, results=results, query_result=message)
 
+@app.route('/clean')
 def clean_database(): 
     try : 
         os.remove('database.db')
+        message = f'SUCCESS : Database deleted successfully '
+        
     except : 
-        pass 
+        message = f'SUCCESS : No action performed. Database is alredy empty'
+    
+    db.create_all()   # create employee table 
 
-clean_database()  # clean database if already exists 
+    return render_template('home.html', logged_messages=[message])
    
-# create employee table 
-db.create_all()
