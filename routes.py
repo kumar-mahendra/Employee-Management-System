@@ -139,4 +139,5 @@ def clean_database():
     db.create_all()   # create employee table 
 
     return render_template('home.html', logged_messages=[message])
-   
+
+db.create_all()
